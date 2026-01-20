@@ -1,8 +1,8 @@
 name: "ci-docx"
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - "*"
 
 permissions:
@@ -25,20 +25,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Linting with ruff
-        run:  |
-              if [ -f ".ruff.toml" ] || [ -f "pyproject.toml" ]; then
-                  echo "config_exists=true" >> $GITHUB_OUTPUT
-              else
-                  echo "config_exists=false" >> $GITHUB_OUTPUT
-              fi
+        run: |
+          if [ -f ".ruff.toml" ] || [ -f "pyproject.toml" ]; then
+              echo "config_exists=true" >> $GITHUB_OUTPUT
+          else
+              echo "config_exists=false" >> $GITHUB_OUTPUT
+          fi
       - name: Run Ruff with config
         run: ruff check --config pyproject.toml
       - name: test project
         run: pytest
-
-                  
-
-
-
-
 
