@@ -3,7 +3,8 @@ name: "ci-docx"
 on: 
   push:
     branches: 
-      - "*"
+      - "main"
+      - "ci-cd"
 
 permissions:
   contents: read
